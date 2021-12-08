@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+  <style>
+    .product {
+      width: 200px;
+      padding: 10px;
+      float: left;
+      margin-right: 30px;
+      box-shadow: 0 0 4px black;
+    }
+  </style>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
+стирать, код с решением задачи пишем под комментарием.
+-->
+<div class="product">
+  <div class="productName">Товар 1</div>
+  <img src="http://lorempixel.com/200/300/food/1/" alt="">
+  <button>В корзину</button>
+</div>
+<div class="product">
+  <div class="productName">Товар 2</div>
+  <img src="http://lorempixel.com/200/300/food/2/" alt="">
+  <button>В корзину</button>
+</div>
+<div class="product">
+  <div class="productName">Товар 3</div>
+  <img src="http://lorempixel.com/200/300/food/3/" alt="">
+  <button>В корзину</button>
+</div>
+
+<script>
+  "use strict";
+
+  /*
+  1. Установите всем элементам с классом "productName" размер шрифта 24px.
+   */
+        const fontEl = document.querySelectorAll(".productName");
+        fontEl.forEach(fontsEl => fontsEl.style.fontSize="24px");
+  /*
+  2. Установите всем элементам с классом "product" внешний отступ справа 50px.
+   */
+        const rightEl = document.querySelectorAll(".product");
+        rightEl.forEach(elRight => elRight.style.marginRight="50px");
+
+  /*
+  3. При клике на кнопку "В корзину" название кнопки должно поменяться на
+  "Добавлено" и кнопка должна стать неактивной.
+   */
+      const btnEl = document.querySelectorAll("body");
+        // for (const clE of btnEl){
+        //     clE.addEventListener('click',()=>{
+        //       clE.textContent = "Добавлено";
+        //       clE.disabled = true;
+        //     })
+        // }
+
+       for(let cliEl of btnEl){ 
+            cliEl.addEventListener('click',event=>{
+           event.target.textContent = "Добавлено";
+           event.target.disabled = true;
+         })
+       }
+
+      
+  /*
+  4. Создайте полную (глубокую) копию элемента с классом product, измените в
+  этой копии путь до картинки на:
+  http://lorempixel.com/200/300/food/4/
+  Поставьте название товара в данной копии "Товар 4" и замените последний
+  отображенный товар на странице на созданную копию. У данной копии также
+  должен правильно работать код из 3-го задания.
+   */
+        const chEl = document.querySelector(".product");
+        const copEl = chEl.cloneNode(true);
+        copEl.querySelector(".productName").innerText ="Товар 4";
+        copEl.querySelector("img").src="http://lorempixel.com/200/300/food/4/";
+        document.querySelector('body').appendChild(copEl);
+  /*
+  5. По истечению 2 секунд с момента открытия страницы первый товар должен быть
+  удален из html.
+   */
+       const delF =document.querySelectorAll(".product");
+       setTimeout(() =>delF[0].remove(), 3000);
+
+
+</script>
+</body>
+</html>
